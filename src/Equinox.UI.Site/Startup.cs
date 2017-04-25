@@ -21,7 +21,7 @@ namespace Equinox.UI.Site
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
@@ -91,7 +91,7 @@ namespace Equinox.UI.Site
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=welcome}/{id?}");
+                    template: "{controller=Dashboards}/{action=Dashboard_1}/{id?}");
             });
 
             // Setting the IContainer interface for use like service locator for events.
